@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Navbar = () => {
+    const {user} = useContext(AuthContext)
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/'>About</Link></li>
         <li><Link to='/appointment'>Appointment</Link></li>
         <li><Link to='/'>Reviews</Link></li>
         <li><Link to='/'>Contact Us</Link></li>
-        <li><Link to='/login'>login</Link></li>
+        {
+            user ?
+            <li><button className='btn btn-ghost'>Log Out</button></li>
+            :
+            <li><Link to='/login'>Login</Link></li>
+        }
     </>
     return (
         <div className="navbar bg-base-100 flex justify-between">
