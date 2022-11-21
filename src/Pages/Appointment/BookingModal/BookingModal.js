@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const BookingModal = ({treatment, setTreatment, selectedDate, refetch}) => {
-    const {name, slots} = treatment; // treatment is appointmentOptions
+    const {name, slots, price} = treatment; // treatment is appointmentOptions
     const date = format(selectedDate, 'PP');
     const {user} = useContext(AuthContext);
 
@@ -23,7 +23,8 @@ const BookingModal = ({treatment, setTreatment, selectedDate, refetch}) => {
             patientName,
             slot,
             email,
-            phone
+            phone,
+            price
         }
 
         // TODO: send data the server
