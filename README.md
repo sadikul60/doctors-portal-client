@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# Doctor Portal
 
-[Doctor Portal Live](https://github.com/facebook/create-react-app).
+[Doctor Portal Live](https://doctors-portal-c83f1.web.app/).
 
+[Doctor Portal Server Code](https://github.com/sadikul60/doctor-portal-server).
