@@ -7,8 +7,8 @@ import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import useToken from '../../hooks/UseToken';
 
 const Login = () => {
-    const {logIn, signInWithGoogle, resetPassword} = useContext(AuthContext);
     const {register, handleSubmit, resetField, formState: {errors}} = useForm();
+    const {logIn, signInWithGoogle,} = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail);
@@ -32,9 +32,7 @@ const Login = () => {
             setLoginError('')
             toast.success('Login successfully.');
             setLoginUserEmail(data.email);
-            console.log(user);
-            resetField('email');
-            resetField('password');
+            
         })
         .catch(err => setLoginError(err.message))
     };
@@ -45,8 +43,9 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             toast.success('Login successfully.');
-            navigate(from, {replace: true});
+            // navigate(from, {replace: true});
             console.log(user);
+            setLoginUserEmail(user.email);
         })
         .catch(err => console.error(err.message))
     };

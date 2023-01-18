@@ -69,6 +69,7 @@ const SignUp = () => {
         })
         .then(res => res.json())
         .then(data => {
+            console.log(data);
             setCreateUserEmail(email);
         })
     };
@@ -81,6 +82,9 @@ const SignUp = () => {
         .then(result => {
             const user = result.user;
             toast.success('SignUp successfully.');
+            const name = user?.displayName;
+            const email = user?.email
+            saveUser(name, email)
             navigate('/');
             console.log(user);
         })

@@ -37,7 +37,8 @@ const MyAppointment = () => {
           </thead>
           <tbody>
             {
-                bookings.map((booking, index) => <tr key={booking._id}>
+                bookings &&
+                bookings?.map((booking, index) => <tr key={booking?._id}>
                     <th>{index + 1}</th>
                     <td>{booking?.patientName}</td>
                     <td>{booking?.treatment}</td>
@@ -45,13 +46,13 @@ const MyAppointment = () => {
                     <td>{booking?.slot}</td>
                     <td>
                       {
-                        booking.price && !booking.paid && <Link
-                        to={`/dashboard/payment/${booking._id}`}
+                        booking?.price && !booking?.paid && <Link
+                        to={`/dashboard/payment/${booking?._id}`}
                         ><button 
                         className="btn btn-primary btn-sm">Pay</button></Link>
                       }
                       {
-                        booking.price && booking.paid && <span className="text-green-600 font-bold">Paid</span>
+                        booking?.price && booking?.paid && <span className="text-green-600 font-bold">Paid</span>
                       }
                     </td>
                   </tr>)
